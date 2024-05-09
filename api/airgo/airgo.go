@@ -366,7 +366,7 @@ func (c *APIClient) ReportNodeOnlineUsers(onlineUserList *[]api.OnlineUser) (err
 	for _, v := range *onlineUserList {
 		onlineUser.UserNodeMap[v.UID] = append(onlineUser.UserNodeMap[v.UID], v.IP)
 	}
-	path := "/api/public/airgo/user/ReportNodeOnlineUsers"
+	path := "/api/public/airgo/user/reportNodeOnlineUsers"
 	res, _ := c.client.R().
 		SetBody(onlineUser).
 		ForceContentType("application/json").
