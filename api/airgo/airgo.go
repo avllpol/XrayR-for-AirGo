@@ -118,7 +118,7 @@ func (c *APIClient) GetNodeInfo() (*api.NodeInfo, error) {
 		c.eTags["node"] = res.Header().Get("Etag")
 	}
 	var nodeInfoResponse NodeInfoResponse
-	err = json.Unmarshal(res.Body(), &nodeInfoResponse)
+	json.Unmarshal(res.Body(), &nodeInfoResponse)
 	nodeInfo, err := c.ParseAirGoNodeInfo(&nodeInfoResponse)
 	if err != nil {
 		return nil, fmt.Errorf("parse node info failed: %s, \nError: %v", res.String(), err)

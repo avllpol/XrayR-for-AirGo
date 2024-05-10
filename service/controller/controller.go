@@ -194,7 +194,8 @@ func (c *Controller) nodeInfoMonitor() (err error) {
 		}
 	}
 	if newNodeInfo.Port == 0 {
-		return errors.New("server port must > 0")
+		log.Print("server port must > 0")
+		return nil
 	}
 
 	// Update User
@@ -299,9 +300,9 @@ func (c *Controller) nodeInfoMonitor() (err error) {
 		}
 		del_num := len(deleted)
 		add_num := len(added)
-		if del_num > 0 || add_num > 0 {
-			log.Printf("%s %d user deleted, %d user added", c.logPrefix(), del_num, add_num)
-		}
+		// if del_num > 0 || add_num > 0 {
+		log.Printf("%s %d user deleted, %d user added", c.logPrefix(), del_num, add_num)
+		// }
 	}
 	c.userList = newUserInfo
 	return nil
